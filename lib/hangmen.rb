@@ -5,19 +5,28 @@ class Game
 
 attr_accessor :name
 
-def initialize(name,queueWin,queueLoss)
+def initialize(name)
   @name = name
-  @queueWin = []
-  @queueLoss = []
-end
 
+end
+puts %{
+ _   _
+| | | |
+| |_| | __ _ _ __   __ _ _ __ ___   __ _ _ __
+|  _  |/ _` | '_ \\ / _` | '_ ` _ \\ / _` | '_ \\
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+\\_| |_/\\__,_|_| |_|\\__, |_| |_| |_|\\__,_|_| |_|
+                    __/ |
+                   |___/
+		}
   def play
+
 
 secret_word = "Pita"
 secret_word.downcase!
 final_word = secret_word.gsub(/[a-z]/," _ ")
-@queueWin = []
-@queueLoss = []
+queueWin = []
+queueLoss = []
 until queueWin.length == secret_word.length || queueLoss.length == 10
 
 
@@ -49,8 +58,10 @@ end
 
 if queueWin.length == secret_word.length
   puts "Congrats! You've won"
+  abort
 elsif queueLoss.length == 10
 puts "You Lost.Please try again!"
+
 end
   end
 def save
