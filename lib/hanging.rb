@@ -21,14 +21,17 @@ secret_word.downcase!
 final_word = secret_word.gsub(/[a-z]/," _ ")
 queueWin = []
 queueLoss = []
+guessed_letters = []
 until queueWin.length == secret_word.length || queueLoss.length == 20
 puts "Welcome to ruby hangman"
 puts "Guess a letter"
 
 letter = gets.chomp.downcase
-
-if secret_word.include? letter
-
+if guessed_letters.include? letter
+puts "you guessed that already!"
+puts final_word
+elsif secret_word.include? letter
+guessed_letters << letter
   puts "Good guess"
   answer = secret_word.index(letter)
   final_word[answer] = letter
